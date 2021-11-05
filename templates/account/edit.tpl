@@ -50,10 +50,6 @@
 
 			<div class="<!-- IF !sso.length -->col-md-9 col-sm-8<!-- ELSE -->col-md-5 col-sm-4<!-- ENDIF !sso.length -->">
 				<form role="form" component="profile/edit/form">
-					<div class="form-group">
-						<label for="fullname">[[user:fullname]]</label>
-						<input class="form-control" type="text" id="fullname" name="fullname" placeholder="[[user:fullname]]" value="{fullname}">
-					</div>
 					<!-- IF allowWebsite -->
 					<div class="form-group">
 						<label for="website">[[user:website]]</label>
