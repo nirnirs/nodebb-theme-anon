@@ -17,7 +17,7 @@ library.addAdminNavigation = async function (header) {
 	header.plugins.push({
 		route: '/plugins/persona',
 		icon: 'fa-paint-brush',
-		name: 'Persona Theme',
+		name: 'Persona Anon Theme',
 	});
 	return header;
 };
