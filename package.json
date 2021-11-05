@@ -1,5 +1,5 @@
 {
-  "name": "nodebb-theme-persona",
+  "name": "nodebb-theme-persona-anon",
   "version": "11.2.21",
   "nbbpm": {
     "compatibility": "^1.18.0"
@@ -8,7 +8,7 @@
   "main": "library.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/psychobunny/nodebb-theme-persona"
+    "url": "https://github.com/nirnirs/nodebb-theme-persona-anon"
   },
   "scripts": {
     "lint": "eslint ."
@@ -22,24 +22,14 @@
   ],
   "contributors": [
     {
-      "name": "Andrew Rodrigues",
-      "email": "andrew@designcreateplay.com",
-      "url": "https://github.com/psychobunny"
-    },
-    {
-      "name": "Julian Lam",
-      "email": "julian@designcreateplay.com",
-      "url": "https://github.com/julianlam"
-    },
-    {
-      "name": "Barış Soner Uşaklı",
-      "email": "baris@designcreateplay.com",
-      "url": "https://github.com/barisusakli"
+      "name": "Nir Shabat",
+      "email": "nirnir.s@gmail.com",
+      "url": "https://github.com/nirnirs"
     }
   ],
   "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/psychobunny/nodebb-theme-persona/issues"
+    "url": "https://github.com/nirnirs/nodebb-theme-persona-anon/issues"
   },
   "dependencies": {
     "pulling": "^2.0.0",
