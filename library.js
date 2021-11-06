@@ -137,3 +137,8 @@ library.addCompanyToPostData = async (data) => {
 	data.fields.push('company');
 	return data;
 }
+
+library.addCompanyToTopicUserFields = async (data) => {
+	data.userFields.push('company');
+	return data;
+}

@@ -40,6 +40,10 @@
 		{
 			"hook": "filter:user.whitelistFields",
 			"method": "whitelistCompanyField"
+		},
+		{
+			"hook": "filter:topics.getUserFields",
+			"method": "addCompanyToTopicUserFields"
 		}
 	],
 	"scripts": [
