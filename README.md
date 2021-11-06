@@ -1,13 +1,13 @@
-Persona theme for NodeBB
+Anon theme for NodeBB
 ====================
 
-Persona is the new default theme for NodeBB as of v0.7.1
+Anon is an anonymized theme for NodeBB based on Persona theme.
 
-## Addons
+## Persona Addons
 
 [Recent Cards](https://github.com/psychobunny/nodebb-plugin-recent-cards)
 
-## Screenshots
+## Persona Screenshots
 
 ![](https://d2gn4xht817m0g.cloudfront.net/p/product_screenshots/images/original/000/570/286/570286-db378dfd28256a8fabacc9129b3638dc678ac393.png?1439315393)
 

@@ -9,7 +9,7 @@ const library = module.exports;
 const getEmailDomain = email => email.substring(email.lastIndexOf("@") + 1);
 
 async function getCompanyFromEmail(email) {
-	const config = await meta.settings.get('persona');
+	const config = await meta.settings.get('anon');
 	const domain = getEmailDomain(email);
 
 	winston.info(JSON.stringify(config));
@@ -25,16 +25,16 @@ async function getCompanyFromEmail(email) {
 library.init = async function (params) {
 	const { router, middleware } = params;
 	const routeHelpers = require.main.require('./src/routes/helpers');
-	routeHelpers.setupAdminPageRoute(router, '/admin/plugins/persona', middleware, [], (req, res) => {
-		res.render('admin/plugins/persona', {});
+	routeHelpers.setupAdminPageRoute(router, '/admin/plugins/anon', middleware, [], (req, res) => {
+		res.render('admin/plugins/anon', {});
 	});
 };
 
 library.addAdminNavigation = async function (header) {
 	header.plugins.push({
-		route: '/plugins/persona',
+		route: '/plugins/anon',
 		icon: 'fa-paint-brush',
-		name: 'Persona Anon Theme',
+		name: 'Anon Theme',
 	});
 	return header;
 };
@@ -70,7 +70,7 @@ library.defineWidgetAreas = async function (areas) {
 };
 
 library.getThemeConfig = async function (config) {
-	const settings = await meta.settings.get('persona');
+	const settings = await meta.settings.get('anon');
 	config.hideSubCategories = settings.hideSubCategories === 'on';
 	config.hideCategoryLastPost = settings.hideCategoryLastPost === 'on';
 	config.enableQuickReply = settings.enableQuickReply === 'on';
@@ -78,7 +78,7 @@ library.getThemeConfig = async function (config) {
 };
 
 library.addUserToTopic = async function (hookData) {
-	const settings = await meta.settings.get('persona');
+	const settings = await meta.settings.get('anon');
 	if (settings.enableQuickReply === 'on') {
 		if (hookData.req.user) {
 			const userData = await user.getUserData(hookData.req.user.uid);

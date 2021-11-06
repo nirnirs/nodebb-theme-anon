@@ -1,7 +1,7 @@
 {
-    "id": "nodebb-theme-persona-anon",
-    "name": "Persona Anon",
+    "id": "nodebb-theme-anon",
+    "name": "Anon",
     "description": "An anonymized Persona theme.",
-    "url": "https://github.com/nirnirs/nodebb-theme-persona-anon",
+    "url": "https://github.com/nirnirs/nodebb-theme-anon",
     "screenshot": "screenshot.png"
 }

@@ -190,7 +190,7 @@ $(document).ready(function () {
 			// initialization
 
 			var chatMenuVisible = !config.disableChat && app.user && parseInt(app.user.uid, 10);
-			var swapped = !!Storage.getItem('persona:menus:legacy-layout');
+			var swapped = !!Storage.getItem('anon:menus:legacy-layout');
 			var margin = window.innerWidth;
 
 			if (swapped) {
@@ -333,18 +333,18 @@ $(document).ready(function () {
 			// so users can swap the sides the menus appear on
 
 			function setupSetting() {
-				if (ajaxify.data.template['account/settings'] && !document.getElementById('persona:menus:legacy-layout')) {
+				if (ajaxify.data.template['account/settings'] && !document.getElementById('anon:menus:legacy-layout')) {
 					require(['translator'], function (translator) {
-						translator.translate('[[persona:mobile-menu-side]]', function (translated) {
-							$('<div class="well checkbox"><label><input type="checkbox" id="persona:menus:legacy-layout"/><strong>' + translated + '</strong></label></div>')
+						translator.translate('[[anon:mobile-menu-side]]', function (translated) {
+							$('<div class="well checkbox"><label><input type="checkbox" id="anon:menus:legacy-layout"/><strong>' + translated + '</strong></label></div>')
 								.appendTo('#content .account > .row > div:first-child')
 								.find('input')
-								.prop('checked', Storage.getItem('persona:menus:legacy-layout', 'true'))
+								.prop('checked', Storage.getItem('anon:menus:legacy-layout', 'true'))
 								.change(function (e) {
 									if (e.target.checked) {
-										Storage.setItem('persona:menus:legacy-layout', 'true');
+										Storage.setItem('anon:menus:legacy-layout', 'true');
 									} else {
-										Storage.removeItem('persona:menus:legacy-layout');
+										Storage.removeItem('anon:menus:legacy-layout');
 									}
 								});
 						});
@@ -382,7 +382,7 @@ $(document).ready(function () {
 			}
 		}
 
-		$('.persona-usercard').remove();
+		$('.anon-usercard').remove();
 
 		if (parseInt(data.uid, 10) === 0) {
 			return false;
@@ -425,7 +425,7 @@ $(document).ready(function () {
 
 	function setupCardRemoval(card) {
 		function removeCard(ev) {
-			if ($(ev.target).closest('.persona-usercard').length === 0) {
+			if ($(ev.target).closest('.anon-usercard').length === 0) {
 				card.fadeOut(function () {
 					card.remove();
 				});
@@ -467,7 +467,7 @@ $(document).ready(function () {
 		$(window).on('action:ajaxify.end', function (ev, data) {
 			if (data.url && data.url.match('^topic/')) {
 				if (config.enableQuickReply) {
-					require(['persona/quickreply'], function (quickreply) {
+					require(['anon/quickreply'], function (quickreply) {
 						if (quickreply) {
 							quickreply.init();
 						}

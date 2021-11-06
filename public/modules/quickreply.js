@@ -2,7 +2,7 @@
 
 /*globals $, app, ajaxify, socket*/
 
-define('persona/quickreply', [
+define('anon/quickreply', [
 	'components', 'composer/autocomplete', 'api'
 ], function(components, autocomplete, api) {
 	var QuickReply = {};
@@ -26,7 +26,7 @@ define('persona/quickreply', [
 		};
 
 		$(window).trigger('composer:autocomplete:init', data);
-		autocomplete._active['persona_qr'] = autocomplete.setup(data);
+		autocomplete._active['anon_qr'] = autocomplete.setup(data);
 		// data.element.textcomplete(data.strategies, data.options);
 		// $('.textcomplete-wrapper').css('height', '100%').find('textarea').css('height', '100%');
 
@@ -55,7 +55,7 @@ define('persona/quickreply', [
 				}
 
 				components.get('topic/quickreply/text').val('');
-				autocomplete._active['persona_qr'].hide();
+				autocomplete._active['anon_qr'].hide();
 			});
 		});
 	};

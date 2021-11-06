@@ -1,14 +1,14 @@
 {
-  "name": "nodebb-theme-persona-anon",
+  "name": "nodebb-theme-anon",
   "version": "11.2.21",
   "nbbpm": {
     "compatibility": "^1.18.0"
   },
-  "description": "Persona theme for NodeBB",
+  "description": "Anon theme for NodeBB",
   "main": "library.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nirnirs/nodebb-theme-persona-anon"
+    "url": "https://github.com/nirnirs/nodebb-theme-anon"
   },
   "scripts": {
     "lint": "eslint ."
@@ -29,7 +29,7 @@
   ],
   "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/nirnirs/nodebb-theme-persona-anon/issues"
+    "url": "https://github.com/nirnirs/nodebb-theme-anon/issues"
   },
   "dependencies": {
     "pulling": "^2.0.0",

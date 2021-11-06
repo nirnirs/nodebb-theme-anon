@@ -1,5 +1,5 @@
 {
-	"id": "nodebb-theme-persona-anon",
+	"id": "nodebb-theme-anon",
 	"hooks": [
 		{
 			"hook": "filter:widgets.getAreas",
@@ -43,7 +43,7 @@
 		}
 	],
 	"scripts": [
-		"public/persona.js",
+		"public/anon.js",
 		"public/modules/autohidingnavbar.js",
 		"public/modules/quickreply.js"
 	],
