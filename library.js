@@ -2,8 +2,25 @@
 
 const meta = require.main.require('./src/meta');
 const user = require.main.require('./src/user');
+const winston = require.main.require('winston');
 
 const library = module.exports;
+
+const getEmailDomain = email => email.substring(email.lastIndexOf("@") + 1);
+
+async function getCompanyFromEmail(email) {
+	const config = await meta.settings.get('persona');
+	const domain = getEmailDomain(email);
+
+	winston.info(JSON.stringify(config));
+	const companyList = config['company-list'];
+	for (const company of companyList) {
+		if (domain === company.domain) {
+			return company.name;
+		}
+	}
+	return null;
+}
 
 library.init = async function (params) {
 	const { router, middleware } = params;
@@ -80,4 +97,43 @@ library.addUserToTopic = async function (hookData) {
 	return hookData;
 };
 
-module.exports = library;
+library.validateEmail = async (data) => {
+	let allowed = data.allowed;
+	let error = data.error;
+	if (!await getCompanyFromEmail(data.email)) {
+		allowed = false;
+		error = 'Invalid domain.';
+	}
+	return { allowed, error };
+}
+
+library.addUserCompanyToPost = async (data) => {
+	winston.info(`Getting userdata for ${data.uid}`);
+	const userData = await user.getUserData(data.uid);
+	winston.info(`Got user data: ${JSON.stringify(userData)}`);
+
+	if (!userData) {
+		throw new Error('[[error:no-user]]');
+	}
+	if (userData.company) {
+		data.profile.push({ content: `<b>${userData.company}</b>` });
+	}
+	return data;
+}
+
+library.addCompanyToUserData = async (data) => {
+	const user = data.user;
+	user.company = await getCompanyFromEmail(user.email);
+	return data;
+}
+
+library.whitelistCompanyField = async (data) => {
+	data.whitelist.push('company');
+	return data;
+}
+
+library.addCompanyToPostData = async (data) => {
+	winston.info('Adding company field to posts fields...');
+	data.fields.push('company');
+	return data;
+}

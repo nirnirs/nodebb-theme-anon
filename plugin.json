@@ -1,11 +1,46 @@
 {
 	"id": "nodebb-theme-persona-anon",
 	"hooks": [
-		{ "hook": "filter:widgets.getAreas", "method": "defineWidgetAreas" },
-		{ "hook": "filter:config.get", "method": "getThemeConfig" },
-		{ "hook": "static:app.load", "method": "init" },
-		{ "hook": "filter:admin.header.build", "method": "addAdminNavigation" },
-		{ "hook": "filter:topic.build", "method": "addUserToTopic" }
+		{
+			"hook": "filter:widgets.getAreas",
+			"method": "defineWidgetAreas"
+		},
+		{
+			"hook": "filter:config.get",
+			"method": "getThemeConfig"
+		},
+		{
+			"hook": "static:app.load",
+			"method": "init"
+		},
+		{
+			"hook": "filter:topic.build",
+			"method": "addUserToTopic"
+		},
+		{
+			"hook": "filter:admin.header.build",
+			"method": "addAdminNavigation"
+		},
+		{
+			"hook": "filter:user.saveEmail",
+			"method": "validateEmail"
+		},
+		{
+			"hook": "filter:posts.custom_profile_info",
+			"method": "addUserCompanyToPost"
+		},
+		{
+			"hook": "filter:user.create",
+			"method": "addCompanyToUserData"
+		},
+		{
+			"hook": "filter:posts.addUserFields",
+			"method": "addCompanyToPostData"
+		},
+		{
+			"hook": "filter:user.whitelistFields",
+			"method": "whitelistCompanyField"
+		}
 	],
 	"scripts": [
 		"public/persona.js",
