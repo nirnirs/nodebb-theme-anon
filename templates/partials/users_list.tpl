@@ -9,6 +9,13 @@
 		</span>
 		<br/>
 
+		<span>
+		<!-- IF users.company -->
+			<b> {users.company} </b>
+		<!-- ENDIF users.company -->
+		</span>
+		<br/>
+
 		<!-- IF section_joindate -->
 		<div title="joindate" class="joindate">
 			<span class="timeago" title="{users.joindateISO}"></span>

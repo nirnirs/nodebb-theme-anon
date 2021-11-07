@@ -142,3 +142,8 @@ library.addCompanyToTopicUserFields = async (data) => {
 	data.userFields.push('company');
 	return data;
 }
+
+library.addCompanyToUsersFields = async (data) => {
+	data.fields.push('company');
+	return data;
+}
