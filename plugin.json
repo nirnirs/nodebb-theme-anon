@@ -48,6 +48,10 @@
 		{
 			"hook": "filter:users.addFields",
 			"method": "addCompanyToUsersFields"
+		},
+		{
+			"hook": "action:user.validationEmailSent",
+			"method": "hashConfirmationEmail"
 		}
 	],
 	"scripts": [

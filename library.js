@@ -1,8 +1,11 @@
 'use strict';
 
+const nconf = require.main.require('nconf');
+const winston = require.main.require('winston');
 const meta = require.main.require('./src/meta');
 const user = require.main.require('./src/user');
-const winston = require.main.require('winston');
+const db = require.main.require('./src/database');
+const password = require.main.require('./src/password');
 
 const library = module.exports;
 
@@ -146,4 +149,18 @@ library.addCompanyToTopicUserFields = async (data) => {
 library.addCompanyToUsersFields = async (data) => {
 	data.fields.push('company');
 	return data;
+}
+
+library.hashConfirmationEmail = async (data) => {
+	// Delete the user's email email
+	winston.info(`Calling delete for confirm:${data.confirm_code} field:email`);
+	await db.deleteObjectField(`confirm:${data.confirm_code}`, 'email');
+
+	const email = data.email.toLowerCase();
+	const hashedEmail = await password.hash(nconf.get('bcrypt_rounds') || 12, email);
+	user.setUserField(data.uid, 'email:confirmed', 1);
+	await db.setObject(`confirm:${data.confirm_code}`, {
+		hashed_email: hashedEmail,
+	});
+	winston.info(`hashed = ${hashedEmail}`);
 }
