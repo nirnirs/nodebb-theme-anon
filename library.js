@@ -151,16 +151,15 @@ library.addCompanyToUsersFields = async (data) => {
 	return data;
 }
 
-library.hashConfirmationEmail = async (data) => {
-	// Delete the user's email email
-	winston.info(`Calling delete for confirm:${data.confirm_code} field:email`);
-	await db.deleteObjectField(`confirm:${data.confirm_code}`, 'email');
+library.updateConfirmationDataToWrite = async (data) => {
+	let dataToWrite = {
+		...data
+	};
+	const email = dataToWrite['email'];
+	delete dataToWrite['email'];
 
-	const email = data.email.toLowerCase();
 	const hashedEmail = await password.hash(nconf.get('bcrypt_rounds') || 12, email);
-	user.setUserField(data.uid, 'email:confirmed', 1);
-	await db.setObject(`confirm:${data.confirm_code}`, {
-		hashed_email: hashedEmail,
-	});
-	winston.info(`hashed = ${hashedEmail}`);
+	dataToWrite['hashed_email'] = hashedEmail;
+	winston.info(`confirmation data to write=${JSON.stringify(dataToWrite)}`);
+	return dataToWrite;
 }

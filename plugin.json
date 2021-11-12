@@ -50,8 +50,8 @@
 			"method": "addCompanyToUsersFields"
 		},
 		{
-			"hook": "action:user.validationEmailSent",
-			"method": "hashConfirmationEmail"
+			"hook": "filter:user.verify.confirmationDataToWrite",
+			"method": "updateConfirmationDataToWrite"
 		}
 	],
 	"scripts": [
