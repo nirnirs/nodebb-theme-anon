@@ -163,3 +163,9 @@ library.updateConfirmationDataToWrite = async (data) => {
 	winston.info(`confirmation data to write=${JSON.stringify(dataToWrite)}`);
 	return dataToWrite;
 }
+
+library.updateConfirmationDataFromRead = async (data) => {
+	data.confirmObj['email'] = data.confirmObj['hashed_email'];
+	delete data.confirmObj['hashed_email'];
+	return data;
+}
