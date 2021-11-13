@@ -50,12 +50,12 @@
 			"method": "addCompanyToUsersFields"
 		},
 		{
-			"hook": "filter:user.verify.confirmationDataToWrite",
-			"method": "updateConfirmationDataToWrite"
+			"hook": "action:user.create",
+			"method": "hashUserEmail"
 		},
 		{
-			"hook": "filter:user.confirm.confirmationDataFromRead",
-			"method": "updateConfirmationDataFromRead"
+			"hook": "action:user.verify",
+			"method": "hashConfirmationEmail"
 		}
 	],
 	"scripts": [

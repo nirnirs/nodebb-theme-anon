@@ -6,6 +6,7 @@ const meta = require.main.require('./src/meta');
 const user = require.main.require('./src/user');
 const db = require.main.require('./src/database');
 const password = require.main.require('./src/password');
+const emailer = require.main.require('./src/emailer');
 
 const library = module.exports;
 
@@ -151,21 +152,22 @@ library.addCompanyToUsersFields = async (data) => {
 	return data;
 }
 
-library.updateConfirmationDataToWrite = async (data) => {
-	let dataToWrite = {
-		...data
-	};
-	const email = dataToWrite['email'];
-	delete dataToWrite['email'];
-
-	const hashedEmail = await password.hash(nconf.get('bcrypt_rounds') || 12, email);
-	dataToWrite['hashed_email'] = hashedEmail;
-	winston.info(`confirmation data to write=${JSON.stringify(dataToWrite)}`);
-	return dataToWrite;
+library.hashConfirmationEmail = async (data) => {
+	winston.info(`hashConfirmationemail got ${JSON.stringify(data)}`);
+	const email = data.data.email.toLowerCase();
+	const hashed = await password.hash(nconf.get('bcrypt_rounds') || 12, email);
+	await db.setObject(`confirm:${data.data.confirm_code}`, {
+		email: hashed,
+	});
 }
 
-library.updateConfirmationDataFromRead = async (data) => {
-	data.confirmObj['email'] = data.confirmObj['hashed_email'];
-	delete data.confirmObj['hashed_email'];
-	return data;
+library.hashUserEmail = async (data) => {
+	const {userData, data} = data;
+	const email = userData.email.toLowerCase();
+	winston.info(`got email ${email}`);
+
+	const hashed = await password.hash(nconf.get('bcrypt_rounds') || 12, email);
+	winston.info(`hashed = ${hashed}`);
+	user.setUserField(userData.uid, 'email', hashed);
+	await emailer.send(data.template, uid, data);
 }
