@@ -152,22 +152,20 @@ library.addCompanyToUsersFields = async (data) => {
 	return data;
 }
 
-library.hashConfirmationEmail = async (data) => {
+library.sendAndHashConfirmationEmail = async (data) => {
 	winston.info(`hashConfirmationemail got ${JSON.stringify(data)}`);
 	const email = data.data.email.toLowerCase();
 	const hashed = await password.hash(nconf.get('bcrypt_rounds') || 12, email);
-	await db.setObject(`confirm:${data.data.confirm_code}`, {
-		email: hashed,
-	});
+	await db.setObjectField(`confirm:${data.data.confirm_code}`, 'email', hashed);
+	await emailer.send(data.data.template, data.uid, data.data);
 }
 
 library.hashUserEmail = async (data) => {
-	const {userData, data} = data;
+	const userData = data.user;
 	const email = userData.email.toLowerCase();
 	winston.info(`got email ${email}`);
 
 	const hashed = await password.hash(nconf.get('bcrypt_rounds') || 12, email);
 	winston.info(`hashed = ${hashed}`);
 	user.setUserField(userData.uid, 'email', hashed);
-	await emailer.send(data.template, uid, data);
 }

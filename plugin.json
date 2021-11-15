@@ -55,7 +55,7 @@
 		},
 		{
 			"hook": "action:user.verify",
-			"method": "hashConfirmationEmail"
+			"method": "sendAndHashConfirmationEmail"
 		}
 	],
 	"scripts": [
