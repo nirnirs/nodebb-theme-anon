@@ -25,11 +25,51 @@ html[data-dir="rtl"] {
 	.categories > li .card, .category > ul > li .card {
 		border-left: none;
 		border-right: 4px solid #ccc;
+		text-align: right;
+			> * {
+				padding-left: none;
+				padding-right: 20px;
+			}
 	}
 
 	.categories > li .content .icon, .category > ul > li .content .avatar {
 		margin-left: 15px;
 		margin-right: 0px;
+	}
+
+	.topic {
+		.posts .icon {
+			>a>.status {
+				right: 0; 
+				left: 12px;
+			}
+			.avatar {
+				margin-left: 15px;
+				margin-right: 0px;
+			}
+		}
+		.posts.timeline .timeline-event, .posts.timeline>[component=post] {
+			border-right: 2px solid #a0c4e4;
+			margin-right: 2.5rem;
+			border-left: none;
+			margin-left: 0px;
+		}
+		.posts.timeline>[component=post]>div:not(.content) {
+			margin-left: 0rem;
+			margin-right: -2.5rem;
+		}
+		.threaded-replies {
+			.replies-count {
+				margin-left: 0px;
+				margin-right: 3px;
+			}
+			margin-left: 0px;
+			margin-right: 60px;
+		}
+		.posts.timeline [component=post]:last-child:after {
+			left: 0;
+			right: calc(-.5rem - 1px);
+		}
 	}
 
 	.categories .description, .categories .category-children {
