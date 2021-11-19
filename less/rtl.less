@@ -53,10 +53,19 @@ html[data-dir="rtl"] {
 			margin-right: 2.5rem;
 			border-left: none;
 			margin-left: 0px;
+			@media (max-width: 991px) {
+				border: 0;
+				padding: 20px 0;
+				margin-right: initial;
+			}
 		}
+
 		.posts.timeline>[component=post]>div:not(.content) {
 			margin-left: 0rem;
 			margin-right: -2.5rem;
+			@media (max-width: 991px) {
+				margin-right: 0;
+			}
 		}
 		.threaded-replies {
 			.replies-count {
