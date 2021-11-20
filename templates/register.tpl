@@ -16,7 +16,7 @@
 					<div class="form-group">
 						<label for="username" class="col-lg-4 control-label">[[register:username]]</label>
 						<div class="col-lg-8">
-							<input class="form-control" type="text" placeholder="[[register:username_placeholder]]" name="username" id="username" autocorrect="off" autocapitalize="off" autocomplete="off" />
+							<input class="form-control" type="text" placeholder="[[register:username_placeholder]]" name="username" id="username" autocorrect="off" autocapitalize="off" autocomplete="off" <!-- IF suggestedUserName --> value="{{suggestedUserName}}" <!-- ENDIF suggestedUserName -->"/>
 							<span class="register-feedback" id="username-notify"></span>
 							<span class="help-block">[[register:help.username_restrictions, {minimumUsernameLength}, {maximumUsernameLength}]]</span>
 						</div>
