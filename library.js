@@ -106,7 +106,7 @@ library.validateEmail = async (data) => {
 	let error = data.error;
 	if (!await getCompanyFromEmail(data.email)) {
 		allowed = false;
-		error = 'Invalid domain.';
+		error = '[[error:invalid-email-domain]]';
 	}
 	return { allowed, error };
 }
