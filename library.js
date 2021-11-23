@@ -128,6 +128,9 @@ library.addUserCompanyToPost = async (data) => {
 library.addCompanyToUserData = async (data) => {
 	const user = data.user;
 	user.company = await getCompanyFromEmail(user.email);
+	if (!user.company) {
+		throw new Error('[[error:invalid-email-domain]');
+	}
 	return data;
 }
 
