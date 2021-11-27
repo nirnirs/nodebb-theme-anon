@@ -184,6 +184,6 @@
     "consent.export_posts": "יצוא פוסטים (CVS.)",
     "consent.export-posts-success": "ייצוא הפוסטים מתבצע כעת. תקבל התראה כאשר הייצוא יסתיים.",
     "emailUpdate.intro": "אנא הכנס את מייל העבודה שלך. techie משתמש בדוא\"ל שלך על מנת לוודא את שם החברה שבה אתה עובד. <strong> כתובת המייל אינה נשמרת ע״י techie </strong>.",
-    "emailUpdate.optional": "<a href='/why_email'>למה אנחנו מבקשים את מייל העבודה?</a>",
+    "emailUpdate.optional": "<a href='/why_work_email'>למה אנחנו מבקשים את מייל העבודה?</a>",
     "emailUpdate.change-instructions": "מייל אימות יישלח לכתובת דוא\"ל שהכנסת עם קישור ייחודי. לחיצה על הקישור יאמת את בעלותך על הדוא\"ל ותקבל גישה לחשבונך."
 }
