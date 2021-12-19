@@ -32,6 +32,7 @@
     "url": "https://github.com/nirnirs/nodebb-theme-anon/issues"
   },
   "dependencies": {
+    "company-email-validator": "^1.0.6",
     "pulling": "^2.0.0",
     "striptags": "^3.2.0"
   },

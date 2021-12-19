@@ -20,6 +20,12 @@
 					<span class="mdl-switch__label"><strong>Enable quick reply</strong></span>
 				</label>
 			</div>
+			<div class="checkbox">
+				<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect">
+					<input class="mdl-switch__input" type="checkbox" id="allowNonBlacklisted" name="allowNonBlacklisted">
+					<span class="mdl-switch__label"><strong>Allow registering with any non blacklisted email domain</strong></span>
+				</label>
+			</div>
 			<div class="row">
 				<div class="col-sm-2 col-xs-12 settings-header">Company List</div>
 				<div class="col-sm-10 col-xs-12">

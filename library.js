@@ -1,6 +1,7 @@
 'use strict';
 
 const nconf = require.main.require('nconf');
+const companyEmailValidator = require('company-email-validator');
 const winston = require.main.require('winston');
 const meta = require.main.require('./src/meta');
 const user = require.main.require('./src/user');
@@ -23,7 +24,17 @@ async function getCompanyFromEmail(email) {
             return company.name;
         }
     }
-    return null;
+
+
+    if (config.allowNonBlacklisted === 'off' || !companyEmailValidator.isCompanyDomain(domain)) {
+        return null;
+    }
+
+    // Try to parse company from domain.
+    const companyName = domain.substring(0, domain.lastIndexOf('.'));
+    const companyNameCap = companyName.charAt(0).toUpperCase() + companyName.substring(1);
+
+    return companyNameCap;
 }
 
 library.init = async function(params) {
@@ -77,6 +88,7 @@ library.getThemeConfig = async function(config) {
     config.hideSubCategories = settings.hideSubCategories === 'on';
     config.hideCategoryLastPost = settings.hideCategoryLastPost === 'on';
     config.enableQuickReply = settings.enableQuickReply === 'on';
+    config.allowNonBlacklisted = settings.allowNonBlacklisted === 'on';
     return config;
 };
 
